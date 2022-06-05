@@ -141,6 +141,7 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 			throws BeansException {
 		// 调用父类构造方法，进行相关的对象创建等操作,包含属性的赋值操作
 		super(parent);
+		//解析给定的路径，获取系统/环境变量,将路径中占位符替换为相应的环境属性值。如: spring-&{userName}.xml
 		setConfigLocations(configLocations);
 		if (refresh) {
 			refresh();

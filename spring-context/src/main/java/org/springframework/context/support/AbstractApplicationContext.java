@@ -563,7 +563,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			 * 4、获取Environment对象，并加载当前系统的属性值到Environment对象中
 			 * 5、准备监听器和事件的集合对象，默认为空的集合
 			 */
-
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
@@ -673,6 +672,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// Store pre-refresh ApplicationListeners...
 		// 判断刷新前的应用程序监听器集合是否为空，如果为空，则将监听器添加到此集合中
+		// springboot时此处不为null            扩展功能的一处实现
 		if (this.earlyApplicationListeners == null) {
 			this.earlyApplicationListeners = new LinkedHashSet<>(this.applicationListeners);
 		}
@@ -692,6 +692,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	/**
 	 * <p>Replace any stub property sources with actual instances.
 	 * @see org.springframework.core.env.PropertySource.StubPropertySource
+	 * web时做了扩展
 	 * see org.springframework.web.context.support.WebApplicationContextUtils#initServletPropertySources
 	 */
 	protected void initPropertySources() {
