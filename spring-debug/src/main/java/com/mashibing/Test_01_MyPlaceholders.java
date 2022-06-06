@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 配置文件名称中占位符替换
+ * 配置文件名称中占位符替换,
  * Enviroment  中配置 spring.profiles.active=dev
  */
 public class Test_01_MyPlaceholders {

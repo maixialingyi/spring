@@ -12,14 +12,14 @@ public class Test {
 
     public static void main(String[] args) {
         //自定义扩展ClassPathXmlApplicationContext
-        MyClassPathXmlApplicationContext ac = new MyClassPathXmlApplicationContext("factoryBean.xml");
+        /*MyClassPathXmlApplicationContext ac = new MyClassPathXmlApplicationContext("factoryBean.xml");
         //获取 FactoryBean
         MyFactoryBean bean1 = (MyFactoryBean) ac.getBean( "&myFactoryBean");
         System.out.println(bean1);
         User bean = (User) ac.getBean("myFactoryBean");
         System.out.println(bean.getUsername());
         User bean2 = (User) ac.getBean("myFactoryBean");
-        System.out.println(bean2.getUsername());
+        System.out.println(bean2.getUsername());*/
 
         /*MyClassPathXmlApplicationContext ac = new MyClassPathXmlApplicationContext("applicationContext.xml");
         System.out.println(ac.getBean(MyPropertySource.class).getName());

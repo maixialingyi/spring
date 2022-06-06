@@ -16,12 +16,14 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
 
     @Override
     protected void initPropertySources() {
+        //todo 扩展性
         System.out.println("扩展initPropertySource  添加需验证的系统参数  如果未配置 throw MissingRequiredPropertiesException");
         //getEnvironment().setRequiredProperties("xxx");
     }
 
     @Override
     protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
+        //todo 扩展性
         //是否允许覆盖同名称的不同定义的对象  <lookup-method>   <replaced-method>
         //super.setAllowBeanDefinitionOverriding(true);
         //是否允许bean之间存在循环依赖
