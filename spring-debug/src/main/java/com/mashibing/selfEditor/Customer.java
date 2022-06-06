@@ -1,8 +1,5 @@
 package com.mashibing.selfEditor;
 
-import org.springframework.context.annotation.PropertySource;
-
-
 public class Customer {
 
     private String name;

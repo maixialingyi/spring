@@ -9,8 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class EditorTest {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext();
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(AddressPropertyConfiguration.class);
         applicationContext.register(Customer.class);
         applicationContext.refresh();

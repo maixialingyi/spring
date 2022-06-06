@@ -9,10 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.Arrays;
 import java.util.Collections;
 
-/**
- * @author dyan
- * @data 2020/12/12
- */
 @Configuration
 public class AddressPropertyConfiguration {
 
