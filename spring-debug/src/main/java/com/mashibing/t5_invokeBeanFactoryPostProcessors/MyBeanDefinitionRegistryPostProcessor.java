@@ -12,6 +12,7 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         System.out.println("执行postProcessBeanDefinitionRegistry---MyBeanDefinitionRegistryPostProcessor");
+        //添加新的BeanDefinitionRegistryPostProcessor
         BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(MySelfBeanDefinitionRegistryPostProcessor.class);
         builder.addPropertyValue("name","zhangsan");
         registry.registerBeanDefinition("msb",builder.getBeanDefinition());

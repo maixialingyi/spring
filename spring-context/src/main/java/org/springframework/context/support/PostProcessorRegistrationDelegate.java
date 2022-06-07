@@ -77,7 +77,7 @@ final class PostProcessorRegistrationDelegate {
 
             // 将BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor区分开
             // 如果自定义BeanFactoryPostProcessor和BeanDefinitionRegistryPostProcessor,
-            // 并在之前就设置进List<BeanFactoryPostProcessor> beanFactoryPostProcessors后置处理器集合,此处不为0
+            // todo 之前就设置进List<BeanFactoryPostProcessor> beanFactoryPostProcessors后置处理器集合,此处不为0
             for (BeanFactoryPostProcessor postProcessor : beanFactoryPostProcessors) {
                 if (postProcessor instanceof BeanDefinitionRegistryPostProcessor) {
                     BeanDefinitionRegistryPostProcessor registryProcessor = (BeanDefinitionRegistryPostProcessor) postProcessor;
@@ -102,6 +102,7 @@ final class PostProcessorRegistrationDelegate {
             // 调用所有实现PriorityOrdered接口的BeanDefinitionRegistryPostProcessor实现类
             // 找到所有实现BeanDefinitionRegistryPostProcessor接口bean的beanName   其中会包含上面已经处理的
             // 如果打开注解扫描 会有 ConfigurationClassPostProcessor
+            // todo  实现PriorityOrdered 的接口处理
             String[] postProcessorNames =
                     beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
             // 遍历处理所有符合规则的postProcessorNames
@@ -127,6 +128,7 @@ final class PostProcessorRegistrationDelegate {
             // 调用所有实现Ordered接口的BeanDefinitionRegistryPostProcessor实现类
             // 找到所有实现BeanDefinitionRegistryPostProcessor接口bean的beanName，
             // 此处需要重复查找的原因在于上面的执行过程中可能会新增其他的BeanDefinitionRegistryPostProcessor 上过程执行会生成新的
+            // todo  实现Ordered 的接口处理
             postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
             for (String ppName : postProcessorNames) {
                 // 检测是否实现了Ordered接口，并且还未执行过
@@ -147,7 +149,7 @@ final class PostProcessorRegistrationDelegate {
             currentRegistryProcessors.clear();
 
             // Finally, invoke all other BeanDefinitionRegistryPostProcessors until no further ones appear.
-            // 最后，调用所有剩下的BeanDefinitionRegistryPostProcessors (没有实现Ordered接口)
+            // todo 最后，调用所有剩下的BeanDefinitionRegistryPostProcessors
             boolean reiterate = true;
             while (reiterate) {
                 reiterate = false;

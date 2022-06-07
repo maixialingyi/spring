@@ -1,4 +1,4 @@
-package com.mashibing.config;
+package com.mashibing.t5_invokeBeanFactoryPostProcessors;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
