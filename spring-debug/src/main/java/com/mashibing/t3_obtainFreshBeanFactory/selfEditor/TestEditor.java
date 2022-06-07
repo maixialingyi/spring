@@ -1,4 +1,4 @@
-package com.mashibing.selfEditor;
+package com.mashibing.t3_obtainFreshBeanFactory.selfEditor;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

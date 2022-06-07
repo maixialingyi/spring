@@ -1,4 +1,4 @@
-package com.mashibing.selftag;
+package com.mashibing.t3_obtainFreshBeanFactory.selftag;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 

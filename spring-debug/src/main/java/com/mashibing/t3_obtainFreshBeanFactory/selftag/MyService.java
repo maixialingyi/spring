@@ -1,8 +1,7 @@
-package com.mashibing.selftag;
+package com.mashibing.t3_obtainFreshBeanFactory.selftag;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 @Configuration
 public class MyService {

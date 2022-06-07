@@ -1,4 +1,4 @@
-package com.mashibing.selftag;
+package com.mashibing.t3_obtainFreshBeanFactory.selftag;
 
 public class User {
 

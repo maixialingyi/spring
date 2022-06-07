@@ -1,9 +1,7 @@
-package com.mashibing.selfEditor;
+package com.mashibing.t3_obtainFreshBeanFactory.selfEditor;
 
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.PropertyEditorRegistry;
-
-import java.beans.PropertyEditor;
 
 /**
  * 自定义注册器

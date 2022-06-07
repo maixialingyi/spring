@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 @Configuration
-@ComponentScan("com.mashibing.selftag")
+@ComponentScan("com.mashibing.t3_obtainFreshBeanFactory.selftag")
 public class MyComponentScan {
 
-    @ComponentScan("com.mashibing.selftag")
+    @ComponentScan("com.mashibing.t3_obtainFreshBeanFactory.selftag")
     @Configuration
     @Order(90)
     class InnerClass{

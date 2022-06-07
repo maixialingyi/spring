@@ -1,9 +1,8 @@
-package com.mashibing.selfbdrpp;
+package com.mashibing.t5_invokeBeanFactoryPostProcessors;
 
 public class Teacher {
 
     private String name;
-
 
     public Teacher() {
         System.out.println("创建teacher对象");

@@ -1,12 +1,9 @@
-package com.mashibing;
+package com.mashibing.t2_prepareRefresh;
 
-import org.springframework.beans.factory.config.BeanPostProcessor;
+import com.mashibing.MyBeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor;
-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.util.Assert;
 
 public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationContext {
 
@@ -14,10 +11,13 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
         super(configLocations);
     }
 
+    /**
+     * 扩展 初始化属性
+     */
     @Override
     protected void initPropertySources() {
-        //todo 扩展性
-        System.out.println("扩展initPropertySource  添加需验证的系统参数  如果未配置 throw MissingRequiredPropertiesException");
+        System.out.println("扩展initPropertySource");
+        //配置系统必校验参数 : 如果未配置 throw MissingRequiredPropertiesException
         //getEnvironment().setRequiredProperties("xxx");
     }
 
@@ -30,7 +30,8 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
         //是否允许bean之间存在循环依赖
         //super.setAllowCircularReferences(true);
 
-
+        //添加自定义BeanFactoryPostProcessor  也可以配置bean 被扫描处理
+        super.addBeanFactoryPostProcessor(new MyBeanFactoryPostProcessor());
 
         //此处为重写,如需执行父类此方法 需调用AbstractRefreshableApplicationContext # customizeBeanFactory
         super.customizeBeanFactory(beanFactory);
