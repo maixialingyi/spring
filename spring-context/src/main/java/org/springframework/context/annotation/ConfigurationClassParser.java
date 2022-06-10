@@ -197,8 +197,8 @@ class ConfigurationClassParser {
 
 		// 执行找到的DeferredImportSelector
 		// DeferredImportSelector是ImportSelector的一个子类
-		// ImportSelector被设计成和@Import注解同样的效果，但是实现了ImportSelector的类可以条件性的决定导入某些配置
-		// DeferredImportSelector的设计魔都是在所有其他的配置类被处理后才进行处理
+		// todo ImportSelector被设计成和@Import注解同样的效果，但是实现了ImportSelector的类可以条件性的决定导入某些配置
+		// DeferredImportSelector的设计都是在所有其他的配置类被处理后才进行处理
 		this.deferredImportSelectorHandler.process();
 	}
 
@@ -647,7 +647,7 @@ class ConfigurationClassParser {
 							exclusionFilter = exclusionFilter.or(selectorFilter);
 						}
 						// 判断引用选择器是否是DeferredImportSelector接口的实例
-						// 如果是则应用选择器将会在所有的配置类都加载完毕后加载
+						// 如果是则应用选择器将会在所有的配置类都加载完毕后加载    todo 通过实现接口不同,执行不同流程
 						if (selector instanceof DeferredImportSelector) {
 							// 将选择器添加到deferredImportSelectorHandler实例中，预留到所有的配置类加载完成后统一处理自动化配置类
 							this.deferredImportSelectorHandler.handle(configClass, (DeferredImportSelector) selector);
@@ -897,7 +897,7 @@ class ConfigurationClassParser {
 		public void processGroupImports() {
 			for (DeferredImportSelectorGrouping grouping : this.groupings.values()) {
 				Predicate<String> exclusionFilter = grouping.getCandidateFilter();
-				// getImports方法是读取自动化配置类的核心入口，
+				// getImports方法是读取自动化配置类的核心入口，加载pring-boot-autoconfigure META-INF/spring.factories
 				grouping.getImports().forEach(entry -> {
 					ConfigurationClass configurationClass = this.configurationClasses.get(entry.getMetadata());
 					try {

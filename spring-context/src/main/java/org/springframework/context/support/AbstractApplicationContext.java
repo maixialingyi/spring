@@ -567,7 +567,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			// Tell the subclass to refresh the internal bean factory.
 			// 创建容器对象：DefaultListableBeanFactory
-			// 加载xml配置文件的属性值到当前工厂中，最重要的就是BeanDefinition
+			// 加载xml配置文件的属性值到当前工厂中BeanDefinitionReader，最重要的就是BeanDefinition
+			// 解析<context:component-scan  如果打开注解: ComponentScanBeanDefinitionParser 中 AnnotationConfigUtils中后置处理器注册成beanDefinition 包含很多需查看
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -576,15 +577,20 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
-				// 扩展点: 子类覆盖此方法做额外的处理，此处我们自己一般不做任何扩展工作，但是可以查看web中的代码，是有具体实现的
+				// 扩展点: 子类覆盖此方任法做额外的处理，此处我们自己一般不做何扩展工作，但是可以查看web中的代码，是有具体实现的
 				postProcessBeanFactory(beanFactory);
 
 				// Invoke factory processors registered as beans in the context.
-				// 调用各种beanFactory处理器,包括自定义/注解扫描/beanDefiniton 排序 等
+				// BeanFactory后置处理器执行: ConfigurationClassPostProcessor    解析注解生成配置 beanDefiniton
+				//   			@Configuration @Bean、@Component、@ComponentScan、
+				// 				@ImportResource @Order  @PropertySource
+				// 				@Import 自动装配逻辑
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
-				// 注册bean处理器，这里只是注册功能，真正调用的是getBean方法
+				// Bean后置处理器，这里只是注册功能，真正调用的是getBean方法
+				// AutowiredAnnotationBeanPostProcessor  @Autowired，@Value,@Inject以及@Lookup
+				// CommonAnnotationBeanPostProcessor     JSR-250注解，例如@Resource,@PostConstruct,@PreDestroy
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.

@@ -3,6 +3,10 @@ package com.mashibing.t3_obtainFreshBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * 解析<context:component-scan  如过打开注解
+ * ComponentScanBeanDefinitionParser 中 AnnotationConfigUtils中后置处理器注册成beanDefinition
+ */
 public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationContext {
 
     public MyClassPathXmlApplicationContext(String... configLocations){
