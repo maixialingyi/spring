@@ -588,7 +588,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
-				// Bean后置处理器，这里只是注册功能，真正调用的是getBean方法
+				// 注册Bean后置处理器，真正调用的是getBean方法
 				// AutowiredAnnotationBeanPostProcessor  @Autowired，@Value,@Inject以及@Lookup
 				// CommonAnnotationBeanPostProcessor     JSR-250注解，例如@Resource,@PostConstruct,@PreDestroy
 				registerBeanPostProcessors(beanFactory);
@@ -979,7 +979,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
 		// Initialize conversion service for this context.
-		// 为上下文初始化类型转换器
+		// 为上下文初始化   todo 类型转换器  学习此处工厂模式
 		if (beanFactory.containsBean(CONVERSION_SERVICE_BEAN_NAME) &&
 				beanFactory.isTypeMatch(CONVERSION_SERVICE_BEAN_NAME, ConversionService.class)) {
 			beanFactory.setConversionService(

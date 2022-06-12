@@ -6,4 +6,5 @@
 自定义aware   : selfAware
 
 
-获取类加载器方法: ClassUtils 
+获取类加载器方法: ClassUtils
+反射生成对象     BeanUtils    
