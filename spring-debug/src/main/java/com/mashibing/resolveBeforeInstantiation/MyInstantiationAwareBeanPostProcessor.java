@@ -10,12 +10,16 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         System.out.println("beanName:"+beanName+"----执行postProcessBeforeInstantiation方法");
+        // 此处可自己扩展创建对象, 默认是没有此步骤的
+        // doCreateBean 之前自己创建对象就直接结束了
         if (beanClass == BeforeInstantiation.class){
+            //代理方式创建对象
 //            Enhancer enhancer = new Enhancer();
 //            enhancer.setSuperclass(beanClass);
 //            enhancer.setCallback(new MyMethodInterceptor());
 //            BeforeInstantiation beforeInstantiation = (BeforeInstantiation) enhancer.create();
 //            System.out.println("创建代理对象："+beforeInstantiation);
+            //直接new对象
             return new BeforeInstantiation();
         }
         return null;
